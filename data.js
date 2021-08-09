@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const ariBnbSchema = mongoose.Schema({
   id: mongoose.Schema.Types.ObjectId,
   title: String,
-  rating: Number,
+  rating: String,
   Reviews: String,
 })
 
