@@ -84,7 +84,7 @@ async function dataPage() {
     try {
       await page.waitForSelector('span._1ne5r4rt', {
         waitUntil: 'load',
-        timeout: 5000,
+        timeout: 50000,
       })
     } catch (err) {
       //console.log(err)
