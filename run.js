@@ -29,6 +29,7 @@ async function hotelPage() {
   const hotelLinks = []
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
+  await page.setDefaultNavigationTimeout(0)
 
   for (let link of links) {
     await page.goto(link)
@@ -80,18 +81,26 @@ async function dataPage() {
 
     //await console.log(titles[0])
     //await title.push(titles[0])
-
-    /*  await page.waitForSelector('span._1ne5r4rt', {
-      waitUntil: 'load',
-      timeout: 0,
-    })
+    try {
+      await page.waitForSelector('span._1ne5r4rt', {
+        waitUntil: 'load',
+        timeout: 50000,
+      })
+    } catch (err) {
+      //console.log(err)
+    }
 
     const ratings = await page.evaluate(() => {
-      return Array.from(document.querySelectorAll('span._1ne5r4rt')).map(
-        (x) => x.textContent
-      )
+      try {
+        return Array.from(document.querySelectorAll('span._1ne5r4rt')).map(
+          (x) => x.textContent
+        )
+      } catch (err) {
+        // console.log(err)
+        return 0
+      }
     })
-*/
+
     // await console.log(ratings[0])
     //await rating.push(ratings[0])
 
@@ -107,10 +116,18 @@ async function dataPage() {
     })
     // await console.log(noOfRatings[0])
     //await noOfRating.push(noOfRatings[0])
+    var rev = 0
+    //const rev = parseInt(noOfRatings[0], 10)
+    if (/\d/.test(noOfRatings[0])) {
+      let resu = noOfRatings[0].match(/\d+/g)
+      // console.log(resu[0])
+      rev = parseInt(resu[0], 10)
+    }
+
     const dataObj = {
       title: titles[0],
-      rating: 5, //ratings[0],
-      Reviews: noOfRatings[0],
+      rating: ratings[0],
+      Reviews: rev,
     }
     // await data.push(dataObj)
     // await console.log(dataObj)

@@ -4,7 +4,7 @@ const ariBnbSchema = mongoose.Schema({
   id: mongoose.Schema.Types.ObjectId,
   title: String,
   rating: String,
-  Reviews: String,
+  Reviews: Number,
 })
 
 module.exports = mongoose.model('AirBnb', ariBnbSchema)
