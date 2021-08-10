@@ -119,9 +119,9 @@ async function dataPage() {
     var rev = 0
     //const rev = parseInt(noOfRatings[0], 10)
     if (/\d/.test(noOfRatings[0])) {
-      let resu = noOfRatings[0].match(/\d+/g)
+      let result = noOfRatings[0].match(/\d+/g)
       // console.log(resu[0])
-      rev = parseInt(resu[0], 10)
+      rev = parseInt(result[0], 10)
     }
 
     const dataObj = {
