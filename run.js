@@ -116,18 +116,18 @@ async function dataPage() {
     })
     // await console.log(noOfRatings[0])
     //await noOfRating.push(noOfRatings[0])
-    var rev = 0
+    var revi = 0
     //const rev = parseInt(noOfRatings[0], 10)
     if (/\d/.test(noOfRatings[0])) {
       let result = noOfRatings[0].match(/\d+/g)
       // console.log(resu[0])
-      rev = parseInt(result[0], 10)
+      revi = parseInt(result[0], 10)
     }
 
     const dataObj = {
       title: titles[0],
       rating: ratings[0],
-      Reviews: rev,
+      Reviews: revi,
     }
     // await data.push(dataObj)
     // await console.log(dataObj)
